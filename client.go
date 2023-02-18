@@ -1,10 +1,11 @@
 package sdarot
 
 import (
-	"golang.org/x/net/publicsuffix"
 	"log"
 	"net/http"
 	"net/http/cookiejar"
+
+	"golang.org/x/net/publicsuffix"
 )
 
 const SdarotURL = "https://sdarot.tw"

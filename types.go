@@ -8,20 +8,13 @@ type Config struct {
 }
 
 type VideoRequest struct {
-	SeriesID string
-	Season   string
-	Episode  string
+	SeriesID int
+	Season   int
+	Episode  int
 }
 
 type Video struct {
-	ID       string
+	ID       int
 	URL      url.URL
-	Metadata Metadata
-}
-
-type Metadata struct {
-	Season      string
-	Episode     string
-	HebrewName  string
-	EnglishName string
+	Metadata VideoRequest
 }

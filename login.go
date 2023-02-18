@@ -3,10 +3,13 @@ package sdarot
 import (
 	"errors"
 	"fmt"
-	"github.com/PuerkitoBio/goquery"
 	"net/url"
 	"strings"
+
+	"github.com/PuerkitoBio/goquery"
 )
+
+var ErrInvalidCredentials = fmt.Errorf("InvalidCredentials")
 
 func (client *Client) login(username string, password string) error {
 	initResponse, err := client.client.Get(SdarotURL)
@@ -39,7 +42,7 @@ func (client *Client) login(username string, password string) error {
 
 	wrongCredsMsg := strings.TrimSpace(s.Text())
 	if wrongCredsMsg != "" {
-		return fmt.Errorf("%s", wrongCredsMsg)
+		return ErrInvalidCredentials
 	}
 
 	return nil

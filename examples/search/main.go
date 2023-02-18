@@ -2,14 +2,15 @@ package main
 
 import (
 	"fmt"
-	"github.com/YakirOren/sdarot"
 	"log"
+
+	"github.com/YakirOren/sdarot"
 )
 
 func main() {
 	client, err := sdarot.New(sdarot.Config{
-		Username: "username",
-		Password: "password",
+		Username: "user",
+		Password: "Password1",
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -21,6 +22,6 @@ func main() {
 	}
 
 	for _, result := range results {
-		fmt.Println(result.EnglishName, "Series ID:", result.SeriesID)
+		fmt.Println(result.EnglishName, "series ID:", result.ID)
 	}
 }
