@@ -151,9 +151,19 @@ func (client *Client) watch(ctx context.Context, data VideoRequest, watchToken s
 		return nil, fmt.Errorf("failed to convert: %w", err)
 	}
 
+	resp, err := client.client.Head(parsedURL.String())
+	if err != nil {
+		return nil, fmt.Errorf("could not determine size of video")
+	}
+
+	if err := resp.Body.Close(); err != nil {
+		return nil, err
+	}
+
 	return &Video{
 		ID:       videoID,
 		URL:      *parsedURL,
 		Metadata: data,
+		Size:     resp.ContentLength,
 	}, nil
 }

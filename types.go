@@ -17,4 +17,5 @@ type Video struct {
 	ID       int
 	URL      url.URL
 	Metadata VideoRequest
+	Size     int64
 }
