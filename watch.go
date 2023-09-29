@@ -39,7 +39,9 @@ func (client *Client) GetVideoWithContext(ctx context.Context, data VideoRequest
 		return nil, err
 	}
 
-	time.Sleep(watchWait)
+	if !client.isMember {
+		time.Sleep(watchWait)
+	}
 
 	return client.watch(ctx, data, token)
 }

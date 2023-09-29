@@ -11,7 +11,8 @@ import (
 const SdarotURL = "https://sdarot.tw"
 
 type Client struct {
-	client *http.Client
+	client   *http.Client
+	isMember bool
 }
 
 // New create a Client.
@@ -26,7 +27,7 @@ func New(config Config) (*Client, error) {
 		Transport: &refererTransport{},
 	}
 
-	sdarotClient := &Client{client: client}
+	sdarotClient := &Client{client: client, isMember: config.IsMember}
 
 	err = sdarotClient.login(config.Username, config.Password)
 	if err != nil {

@@ -5,6 +5,7 @@ import "net/url"
 type Config struct {
 	Username string
 	Password string
+	IsMember bool
 }
 
 type VideoRequest struct {
